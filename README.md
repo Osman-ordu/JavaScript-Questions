@@ -67,3 +67,38 @@ Javascript'deki olay kuyruğundan dolayı, `setTimeout` callback fonksiyonu, dö
 </details>
 
 ---
+###### 3. Çıktısı Nedir?
+
+```javascript
+const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => 2 * Math.PI * this.radius
+};
+
+console.log(shape.diameter());
+console.log(shape.perimeter());
+```
+
+- A: `20` ve `62.83185307179586`
+- B: `20` ve `NaN`
+- C: `20` ve `63`
+- D: `NaN` ve `63`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`diameter` sıradan bir fonksiyonken, `perimeter`'in arrow fonksiyon olduğuna dikkat edin.
+
+Arrow fonksiyonlarda, `this` anahtar kelimesi, sıradan fonksiyonların aksine, kendi sardığı mevcut scope'u referans alır. Bu demektir ki, `perimeter`'i çağırdığımız zaman, `shape` objesini değil, kendi sardığı scope'u referans alıyor (örneğin window).
+
+Bu objede, `radius` değeri olmadığından `undefined` döndürüyor. 
+
+</p>
+</details>
+
+---
