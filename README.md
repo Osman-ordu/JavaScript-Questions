@@ -102,3 +102,27 @@ Bu objede, `radius` değeri olmadığından `undefined` döndürüyor.
 </details>
 
 ---
+###### 4. Çıktısı Nedir?
+
+```javascript
++true;
+!"Osman";
+```
+
+- A: `1` and `false`
+- B: `false` and `NaN`
+- C: `false` and `false`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Artı (unary plus), işlemeye çalıştığı değişkeni sayıya çevirmeye çalışır. `true` `1` ve `false` `0` demektir.
+
+`'Osman'` harf dizisi doğrusal ("truthy") bir değerdir. Aslında sorduğumuz şey, "bu doğrusal değer yanlış-ımsı ("falsy") mı?". Bu da `false` döndürür. 
+</p>
+</details>
+
+---
+
