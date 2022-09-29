@@ -125,4 +125,74 @@ Artı (unary plus), işlemeye çalıştığı değişkeni sayıya çevirmeye ça
 </details>
 
 ---
+###### 5. Hangisi doğru?
+
+```javascript
+const bird = {
+  size: "small"
+};
+
+const mouse = {
+  name: "Mickey",
+  small: true
+};
+```
+
+- A: `mouse.bird.size` geçerli değildir
+- B: `mouse[bird.size]` geçerli değildir
+- C: `mouse[bird["size"]]` geçerli değildir
+- D: Hepsi geçerlidir
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Javascript'te, tüm nesne keyleri string'dir (Symbol olmadıkları müddetçe). Keyleri, string olarak _yazmadıysak_ bile, arka planda string'e çevrilirler.
+
+Javascript, ifadeleri yorumlar (ya da açar ("unboxes")). Köşeli parentez notasyonu kullandığımız zaman, Javascript ilk `[` görür ve `]` bulana kadar devam eder. Ancak ondan sonra ifadeyi hesaplar.
+
+`mouse[bird.size]`: Önce `bird.size` çalıştırılır, o da `"small"` demektir. `mouse["small"]`, `true` döndürür.
+
+Ancak, nokta notasyonunda bu gerçekleşmez. `mouse`, `bird` diye bir keye sahip değildir ki bu da `mouse.bird`, `undefined` demektir. Sonra, nokta notasyonunu kullanarak `size`'a ulaşmak istiyoruz: `mouse.bird.size`. `mouse.bird`, `undefined` olduğundan, aslında ulaşmaya çalıştığımız `undefined.size`. Bu geçerli değil ve `Cannot read property "size" of undefined`'a benzer bir hata fırlatacaktır.
+</p>
+</details>
+
+---
+
+
+###### 6. Çıktısı Nedir?
+
+```javascript
+let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+c.greeting = "Hello";
+console.log(d.greeting);
+```
+
+- A: `Hello`
+- B: `Hey!`
+- C: `undefined`
+- D: `ReferenceError`
+- E: `TypeError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Javascript'te tüm nesneler, birbirlerine eşitlendikleri zaman _referansları_ ile etkileşime girerler.
+
+Önce, `c` değişkeni bir nesnenin değerini tutuyor. Sonra, `d`'ye aynı referansı atadık ki bu referans da `c`'nin sahip olduğu nesnedir.
+<img src="https://i.imgur.com/ko5k0fs.png" width="200">
+
+Bir nesneyi değiştirdiğiniz zaman, hepsini değiştirirsiniz.
+
+</p>
+</details>
+
+---
+
 
