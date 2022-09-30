@@ -258,6 +258,59 @@ console.log(freddie.colorChange("orange"));
 </details>
 
 ---
+###### 9. Çıktısı Nedir?
+
+```javascript
+let greeting;
+greetign = {}; // Yazım hatası!
+console.log(greetign);
+```
+
+- A: `{}`
+- B: `ReferenceError: greetign is not defined`
+- C: `undefined`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Nesneyi loglar çünkü global nesne üzerinde boş bir nesne oluşturduk. `greeting`'i `greetign` olarak yanlış yazdığımız zaman, JS yorumlayıcısı bunu `global.greetign = {}` olarak gördü (ya da tarayıcı içinde `window.greetign = {}`).
+
+Bundan kaçınmak için, `"use strict"` kullanabiliriz. Bu, bir değişkene herhangi bir atama yapmadan önce tanımladığınızdan emin olmanızı sağlar.
+</p>
+</details>
+
+---
+
+###### 10. Bunu yaptığımız zaman ne gerçekleşir?
+
+```javascript
+function bark() {
+  console.log("Woof!");
+}
+
+bark.animal = "dog";
+```
+
+- A: Hiç bir şey, tamamen iyi!
+- B: `SyntaxError`. Fonksiyonlara bu şekilde özellik atayamazsın.
+- C: `"Woof"` şeklinde loglanır.
+- D: `ReferenceError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Javascript'te bu mümkün, çünkü fonksiyonlar nesnedir! (Primitive tiplere nazaran her şey nesnedir)
+
+Fonksiyon özel bir nesne tipidir. Yazdığınız kod asıl fonksiyon değil. Fonksiyon, özelliklere sahip bir nesnedir. Bu özellik çalıştırabilme kapasitesine sahiptir ("invocable").
+
+</p>
+</details>
+
+---
 
 
 
