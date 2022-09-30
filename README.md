@@ -1,8 +1,7 @@
 # JavaScript Sorular Listesi
 
-Temelden ileri düzeye: Javascript'i ne kadar iyi bildiğinizi test edin, bilginizi biraz tazeleyin ya da mülakatanıza hazırlanın! :muscle: :rocket: 
-
-Cevaplar, soruların altında gizlenmiştir. Görmek için sadece tıklayın. İyi şanslar
+Temelden ileri düzeye: Javascript problemleri
+Cevaplar, soruların altında gizlenmiştir. Görmek için sadece tıklayın.
 
 
 
