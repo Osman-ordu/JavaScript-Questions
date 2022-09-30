@@ -1,7 +1,7 @@
 # JavaScript Sorular Listesi
 
-Temelden ileri düzeye: Javascript problemleri
-Cevaplar, soruların altında gizlenmiştir. Görmek için sadece tıklayın.
+## Temelden ileri düzeye: Javascript problemleri
+### Cevaplar, soruların altında gizlenmiştir. Görmek için sadece tıklayın.
 
 
 
