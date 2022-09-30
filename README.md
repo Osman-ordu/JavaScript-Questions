@@ -260,8 +260,4 @@ console.log(freddie.colorChange("orange"));
 ---
 
 
-```javascript
-var x = 5;
-let y = 7;
-const z = ;
-```
+
