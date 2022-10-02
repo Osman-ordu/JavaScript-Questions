@@ -383,6 +383,44 @@ console.log(sarah);
 </details>
 
 ---
+###### 13. Olay silsilesinin (event propagation) üç aşaması nedir?
+
+- A: Target > Capturing > Bubbling
+- B: Bubbling > Target > Capturing
+- C: Target > Bubbling > Capturing
+- D: Capturing > Target > Bubbling
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: D
+
+**capturing** aşaması süresince, olay ata ("ancestor) elemanlardan hedef elemana doğru gider. Daha sonra **target** elemana ulaşır ve **bubbling** başlar. 
+
+<img src="https://i.imgur.com/N18oRgd.png" width="200">
+
+</p>
+</details>
+
+---
+
+###### 14. Bütün nesneler prototiplere sahiptir.
+
+- A: doğru
+- B: yanlış
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+Bütün nesneler prototiplere ("prototypes") sahiptir, **temel nesne**, **base object**, hariç. Temel nesne, kullanıcı tarafından oluşturulmuş nesnedir, ya da `new` anahtar kelimesi kullanarak oluşturulmuş bir nesnedir. Temel nesne bazı method ve özelliklere erişebilir, `.toString` gibi. Yerleşik gelen Javascript methodlarını kullanabilme sebebi budur! Buna benzer tüm methodlar prototip üzerinden erişebilir. Her ne kadar Javascript, methodu direkt olarak nesneniz üzerinden bulamasa da, prototip zinciri üzerinden aşağıya doğru gider ve orada bulur, böylece sizin için erişebilir yapar.
+</p>
+</details>
+
+---
+
+
 
 
 
