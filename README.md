@@ -419,6 +419,72 @@ Bütün nesneler prototiplere ("prototypes") sahiptir, **temel nesne**, **base o
 </details>
 
 ---
+###### 15. Çıktısı Nedir?
+
+```javascript
+function sum(a, b) {
+  return a + b;
+}
+
+sum(1, "2");
+```
+
+- A: `NaN`
+- B: `TypeError`
+- C: `"12"`
+- D: `3`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Javascript **dinamik tipli dil**dir: değişkenlerin hangi tip olduğunu belirtmeyiz. Değerler otomatik olarak diğer tipi bilmeden dönüştürebilir, bu _implicit type coercion_, _örtük tip dönüşümü_, olarak adlandırılır. **Coercion** bir tipi diğer bir tipe dönüştürmektir.
+
+Bu örnekte, JavaScript sayı olan `1`'i string'e dönüştürüyor, fonksiyonun mantıklı olması ve değer döndürmesi için. Sayısal tip (`1`) ve string tip (`2`)'nin toplanması sırasında, sayıya string olarak muamele edilir. Stringleri `"Hello" + "World"` şeklinde birleştirebiliriz, yani burada olan `"1" + "2"` ki bu da `"12"` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 16. Çıktısı Nedir?
+
+```javascript
+let number = 0;
+console.log(number++);
+console.log(++number);
+console.log(number);
+```
+
+- A: `1` `1` `2`
+- B: `1` `2` `2`
+- C: `0` `2` `2`
+- D: `0` `1` `2`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+**son ek**, **postfix**, `++` unary operatörü:
+
+
+1. Değer döndürür (`0` döndürür)
+2. Değeri arttırır (sayı şimdi `1`)
+
+**ön ek**, **prefix**, `++` unary operatörü:
+
+1. Değeri arttırır (sayı şimdi `2`)
+2. Değeri döndürür (`2` döndürür)
+
+Burada `0 2 2` döner.
+
+</p>
+</details>
+
+---
+
 
 
 
