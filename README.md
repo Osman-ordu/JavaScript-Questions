@@ -484,6 +484,128 @@ Burada `0 2 2` döner.
 </details>
 
 ---
+###### 17. Çıktısı Nedir?
+
+```javascript
+function getPersonInfo(one, two, three) {
+  console.log(one);
+  console.log(two);
+  console.log(three);
+}
+
+const person = "Lydia";
+const age = 21;
+
+getPersonInfo`${person} is ${age} years old`;
+```
+
+- A: `"Lydia"` `21` `["", " is ", " years old"]`
+- B: `["", " is ", " years old"]` `"Lydia"` `21`
+- C: `"Lydia"` `["", " is ", " years old"]` `21`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+Eğer "tagged template literals" kullanırsanoz, ilk argumanın değeri her zaman string değerler dizisidir. Geriye kalan argumanlar, ifadeye geçilen değerleri alır.
+
+</p>
+</details>
+
+---
+
+###### 18. Çıktısı Nedir?
+
+```javascript
+function checkAge(data) {
+  if (data === { age: 18 }) {
+    console.log("You are an adult!");
+  } else if (data == { age: 18 }) {
+    console.log("You are still an adult.");
+  } else {
+    console.log(`Hmm.. You don't have an age I guess`);
+  }
+}
+
+checkAge({ age: 18 });
+```
+
+- A: `You are an adult!`
+- B: `You are still an adult.`
+- C: `Hmm.. You don't have an age I guess`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Eşitliği test ederken, nesneler _referanslarına_ göre kıyaslanırken primitifler _değerlerine_ göre kıyaslanır. Javascript, nesnelerin referanslarının hafızada aynı konumda olup olmadığını kontrol eder.
+
+Kıyasladığımız iki nesne bu şekilde değilse: parametre olarak geçtiğimiz nesne, hafızada eşitliğini kontrol ettiğimiz nesneden farklı bir konumu referans gösterir.
+
+Bu sebepten, `{ age: 18 } === { age: 18 }` ve `{ age: 18 } == { age: 18 }`, ikisi de `false` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 19. Çıktısı Nedir?
+
+```javascript
+function getAge(...args) {
+  console.log(typeof args);
+}
+
+getAge(21);
+```
+
+- A: `"number"`
+- B: `"array"`
+- C: `"object"`
+- D: `"NaN"`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Yayma operatorü, "spread operator", (`...args`) argumanların dahil olduğu bir dizi döndürür. Dizi bir nesnedir, bu yüzden `typeof args` `"object"` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 20. Çıktısı Nedir?
+
+```javascript
+function getAge() {
+  "use strict";
+  age = 21;
+  console.log(age);
+}
+
+getAge();
+```
+
+- A: `21`
+- B: `undefined`
+- C: `ReferenceError`
+- D: `TypeError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+`"use strict"` ile, yanlışlıkla global değişkenler tanımlamadığınızdan emin olabilirsiniz. `age` değişkenini hiç tanımlamadık ve `"use strict"` kullandığımızdan, referans hatası fırlatacaktır. Eğer `"use strict"` kullanmasaydık, `age` özelliği global nesneye eklenmiş olacağından, çalışmış olacaktı.
+
+</p>
+</details>
+
+---
 
 
 
