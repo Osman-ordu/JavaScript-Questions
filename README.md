@@ -606,6 +606,28 @@ getAge();
 </details>
 
 ---
+###### 21. `sum`'ın değeri nedir?
+
+```javascript
+const sum = eval("10*10+5");
+```
+
+- A: `105`
+- B: `"105"`
+- C: `TypeError`
+- D: `"10*10+5"`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+`eval`, string olarak geçilen kodu çalıştırır. Eğer bir ifadeyse, bu durumdaki gibi, ifadeyi çalıştırır. İfade `10 * 10 + 5`. Bu `105` sayısını döndürür.
+
+</p>
+</details>
+
+---
 
 
 
