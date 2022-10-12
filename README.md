@@ -628,7 +628,30 @@ const sum = eval("10*10+5");
 </details>
 
 ---
+###### 22. cool_secret ne kadar süre boyunca erişebilinir?
 
+```javascript
+sessionStorage.setItem("cool_secret", 123);
+```
+
+- A: Sonsuza kadar, veri kaybolmaz.
+- B: Kullanıcı sekmeyi kapatınca.
+- C: Kullanıcı tamamen tarayıcıyı kapattığı zaman, sadece sekmeyi değil.
+- D: Kullanıcı bilgisayarını kapattığı zaman.
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`sessionStorage` içinde saklanan veri _sekme_ kapatıldıktan sonra kaldırılır.
+
+Eğer `localStorage` kullandıysanız, veri sonsuza kadar orada olacaktır, örnek olarak `localStorage.clear()` çalıştırılmadığı sürece. 
+
+</p>
+</details>
+
+---
 
 
 
