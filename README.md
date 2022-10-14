@@ -652,6 +652,133 @@ Eğer `localStorage` kullandıysanız, veri sonsuza kadar orada olacaktır, örn
 </details>
 
 ---
+###### 23. Çıktısı Nedir?
+
+```javascript
+var num = 8;
+var num = 10;
+
+console.log(num);
+```
+
+- A: `8`
+- B: `10`
+- C: `SyntaxError`
+- D: `ReferenceError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`var` anahtar kelimesi ile aynı isme sahip birden çok değişken tanımlayabilirsiniz. O halde değişken son değeri tutacak.
+
+Bunu `let` ya da `const` ile yapamazsınız, "block-scoped" olduklarından dolayı.
+
+</p>
+</details>
+
+---
+
+###### 24. Çıktısı Nedir?
+
+```javascript
+const obj = { 1: "a", 2: "b", 3: "c" };
+const set = new Set([1, 2, 3, 4, 5]);
+
+obj.hasOwnProperty("1");
+obj.hasOwnProperty(1);
+set.has("1");
+set.has(1);
+```
+
+- A: `false` `true` `false` `true`
+- B: `false` `true` `true` `true`
+- C: `true` `true` `false` `true`
+- D: `true` `true` `true` `true`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Tüm nesne anahtarları (Symbol'ler hariç) arka planda string'dir, kendiniz string olarak yazmasanız bile. Bu sebepten `obj.hasOwnProperty('1')` da `true` döndürür.
+
+Set için bu şekilde çalışmaz. Setimizde `'1'` yok: `set.has('1')` `false` döndürür. Setimiz sayısal tip `1`'e sahip, `set.has(1)` `true` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 25. Çıktısı Nedir?
+
+```javascript
+const obj = { a: "one", b: "two", a: "three" };
+console.log(obj);
+```
+
+- A: `{ a: "one", b: "two" }`
+- B: `{ b: "two", a: "three" }`
+- C: `{ a: "three", b: "two" }`
+- D: `SyntaxError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Eğer aynı ada sahip iki tane anahtarınız, "key", varsa, anahtar değiştirilecektir. Hala ilk konumunda olacaktır ama son belirtilen değerle birlikte.
+
+</p>
+</details>
+
+---
+
+###### 26. JavaScript global yürütme konteksti, "global execution context", sizin için iki şey oluşturur: global nesne, ve "this" anahtar kelimesi.
+
+- A: doğru
+- B: yanlış
+- C: değişir
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Temel yürütme konteksti, global yürütme kontekstidir: kodunuzda her yerde erişilebilir olan şeydir.
+
+</p>
+</details>
+
+---
+
+###### 27. Çıktısı Nedir?
+
+```javascript
+for (let i = 1; i < 5; i++) {
+  if (i === 3) continue;
+  console.log(i);
+}
+```
+
+- A: `1` `2`
+- B: `1` `2` `3`
+- C: `1` `2` `4`
+- D: `1` `3` `4`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Eğer belirli şart `true` döndürürse, `continue` ifadesi yinelemeyi, "iteration", atlar.
+
+</p>
+</details>
+
+---
+
 
 
 
