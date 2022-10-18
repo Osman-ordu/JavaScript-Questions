@@ -778,6 +778,35 @@ Eğer belirli şart `true` döndürürse, `continue` ifadesi yinelemeyi, "iterat
 </details>
 
 ---
+###### 28. Çıktısı Nedir?
+
+```javascript
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const name = "Lydia";
+
+console.log(name.giveLydiaPizza())
+```
+
+- A: `"Just give Lydia pizza already!"`
+- B: `TypeError: not a function`
+- C: `SyntaxError`
+- D: `undefined`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+`String`, özellikler de ekleyebileceğimiz tümleşik bir yapıcıdır. Prototipine bir method ekledim sadece. Primitif stringler, string prototip fonksiyonu tarafından üretilen string nesnesine otomatik olarak dönüştürülür. Bu yüzden, tüm stringler (string nesneleri) bu methoda erişebilir!
+
+</p>
+</details>
+
+---
+
 
 
 
