@@ -806,7 +806,92 @@ console.log(name.giveLydiaPizza())
 </details>
 
 ---
+###### 29. Çıktısı Nedir?
 
+```javascript
+const a = {};
+const b = { key: "b" };
+const c = { key: "c" };
+
+a[b] = 123;
+a[c] = 456;
+
+console.log(a[b]);
+```
+
+- A: `123`
+- B: `456`
+- C: `undefined`
+- D: `ReferenceError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+Nesne keyleri otomatik olarak stringe dönüştürülür. `a` nesnesine değeri `123` olacak şekilde, bir nesneyi key olarak atamaya çalışıyoruz.
+
+Ancak, bir nesnesi string hale getirince, `"[object Object]"` olur. Dolayısıyla burada söylediğimiz, `a["object Object"] = 123`. Sonra, aynı şeyi tekrar yapmayı deniyoruz. `c`, dolaylı olarak string hale getirdiğimiz başka bir nesne. O halde, `a["object Object"] = 456`.
+
+Sonra, `a[b]`'yi logluyoruz, ki aslında o da `a["object Object"]`. Onu da `456` olarak atamıştık, o yüzden `456` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 30. Çıktısı Nedir?
+
+```javascript
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"));
+const baz = () => console.log("Third");
+
+bar();
+foo();
+baz();
+```
+
+- A: `First` `Second` `Third`
+- B: `First` `Third` `Second`
+- C: `Second` `First` `Third`
+- D: `Second` `Third` `First`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+Bir `setTimeout` fonksiyonumuz var ve ilk onu çalıştırdık. Yine de en son loglandı.
+
+Bunun nedeni tarayıcılarda, "runtime engine"'a sahip olmamamızdan, `WebAPI` denilen bir şeye sahibiz. `WebAPI`, örneğin DOM ile çalışması için bize, `setTimeout` fonksiyonunu verir.
+
+_callback_ WebAPI'a eklendikten sonra, `setTimeout` fonksiyonun kendisi (callback hariç!) hafıza bloğundan atılır, "popped off the stack".
+
+<img src="https://i.imgur.com/X5wsHOg.png" width="200">
+
+Şimdi, `foo` çalıştı ve `"First"` loglandı.
+
+<img src="https://i.imgur.com/Pvc0dGq.png" width="200">
+
+`foo` hafıza bloğundan atıldı ve `baz` çalıştı. `"Third"` loglandı.
+
+<img src="https://i.imgur.com/WhA2bCP.png" width="200">
+
+WebAPI, her ne zaman bir şeyler hazırsa hafıza bloğuna öylece ekleyemez. Onun yerine callback fonksiyonunu, _queue_ diye adlandıralan bir şeye ekler.
+
+<img src="https://i.imgur.com/NSnDZmU.png" width="200">
+
+Burası olay döngüsünün çalışmaya başlayacapı yerdir. **olay döngüsü**, **event loop**, hafıza bloğuna ve iş kuyruğuna, "task queue", bakar. Eğer hafıza bloğu boşsa, kuyruktaki ilk şeyi alır ve hafıza bloğuna ekler.
+
+<img src="https://i.imgur.com/uyiScAI.png" width="200">
+
+`bar` çalıştı, `"Second"` loglandı ve hafıza bloğundan atıldı.
+
+</p>
+</details>
+
+---
 
 
 
