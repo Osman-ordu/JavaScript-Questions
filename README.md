@@ -892,7 +892,61 @@ Burası olay döngüsünün çalışmaya başlayacapı yerdir. **olay döngüsü
 </details>
 
 ---
+###### 31. Butona tıklandığında, event.target nedir?
 
+```html
+<div onclick="console.log('first div')">
+  <div onclick="console.log('second div')">
+    <button onclick="console.log('button')">
+      Click!
+    </button>
+  </div>
+</div>
+```
+
+- A: Dıştaki `div`
+- B: İçteki `div`
+- C: `button`
+- D: İç içe olan tüm elemanlar listesi.
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Olaya sebep olan en derindeki iç eleman, olayın hedefidir ("event.target"). `event.stopPropagation` kullanarak "bubbling"'i durdurabilirsiniz.
+
+</p>
+</details>
+
+---
+
+###### 32. Paragrafa tıkladığınız zaman, çıktı olarak ne loglanır?
+
+```html
+<div onclick="console.log('div')">
+  <p onclick="console.log('p')">
+    Click here!
+  </p>
+</div>
+```
+
+- A: `p` `div`
+- B: `div` `p`
+- C: `p`
+- D: `div`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Eğer `p`'ye tıklarsak, iki log görürüz: `p` ve `div`. Olay silsilesi, "event propagation", sırasında, 3 aşama vardır: "capturing", "target", ve "bubbling". Varsayılan olarak, olay işleyiciler, "event handlers", "bubbling" aşamasında (`useCapture`'ı `true` olarak ayarlanmadığı müddetçe) çalıştırılır. En derin elemandan dışa doğru gider.
+
+</p>
+</details>
+
+---
 
 
 
