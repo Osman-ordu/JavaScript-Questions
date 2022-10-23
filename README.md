@@ -947,6 +947,38 @@ Eğer `p`'ye tıklarsak, iki log görürüz: `p` ve `div`. Olay silsilesi, "even
 </details>
 
 ---
+###### 33. Çıktısı Nedir?
+
+```javascript
+const person = { name: "Lydia" };
+
+function sayHi(age) {
+  console.log(`${this.name} is ${age}`);
+}
+
+sayHi.call(person, 21);
+sayHi.bind(person, 21);
+```
+
+- A: `undefined is 21` `Lydia is 21`
+- B: `function` `function`
+- C: `Lydia is 21` `Lydia is 21`
+- D: `Lydia is 21` `function`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: D
+
+İkisinde de, `this` anahtar kelimesinin referans olmasını istediğimiz nesneyi geçebiliriz. Ancak, `.call` _anında çalıştırılır_!
+
+`.bind.` fonksiyonun _kopyasını_ döndürür, ama konteksle bağlı şekilde. Anında çalıştırılmaz.
+
+</p>
+</details>
+
+---
+
 
 
 
