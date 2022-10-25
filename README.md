@@ -978,6 +978,72 @@ sayHi.bind(person, 21);
 </details>
 
 ---
+###### 34. Çıktısı Nedir?
+
+```javascript
+function sayHi() {
+  return (() => 0)();
+}
+
+console.log(typeof sayHi());
+```
+
+- A: `"object"`
+- B: `"number"`
+- C: `"function"`
+- D: `"undefined"`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`sayHi` fonksiyonu, anında çalıştırılan fonksiyonun, "immediately invoked function (IIFE)", döndürdüğü değeri döndürür. Bu fonksiyon `0` döndürdü, k, tipi `"number"`'dır.
+
+Bilginize; 7 tane tümleşik tip vardır: `null`, `undefined`, `boolean`, `number`, `string`, `object`, `symbol`, ve `bigint`. Fonksiyonlar nesne olduklarından, `"function"` tip değildir. Fonksiyonun tipi `"object"`'dir.
+
+</p>
+</details>
+
+---
+
+###### 35. Bu değerlerden hangileri yanlış-ımsıdır (falsy)?
+
+```javascript
+0;
+new Number(0);
+("");
+(" ");
+new Boolean(false);
+undefined;
+```
+
+- A: `0`, `''`, `undefined`
+- B: `0`, `new Number(0)`, `''`, `new Boolean(false)`, `undefined`
+- C: `0`, `''`, `new Boolean(false)`, `undefined`
+- D: All of them are falsy
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+Sadece 6 tane yanlış-ımsı, "falsy", değer vardır:
+
+- `undefined`
+- `null`
+- `NaN`
+- `0`
+- `''` (empty string)
+- `false`
+
+Fonksiyon yapıcıları, `new Number` ve `new Boolean` gibi, doğrusaldır.
+
+</p>
+</details>
+
+---
+
 
 
 
