@@ -1044,6 +1044,59 @@ Fonksiyon yapıcıları, `new Number` ve `new Boolean` gibi, doğrusaldır.
 
 ---
 
+###### 36. Çıktısı Nedir?
+
+```javascript
+console.log(typeof typeof 1);
+```
+
+- A: `"number"`
+- B: `"string"`
+- C: `"object"`
+- D: `"undefined"`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`typeof 1` `"number"` döndürür.
+`typeof "number"` `"string"` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 37. Çıktısı Nedir?
+
+```javascript
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
+```
+
+- A: `[1, 2, 3, 7 x null, 11]`
+- B: `[1, 2, 3, 11]`
+- C: `[1, 2, 3, 7 x empty, 11]`
+- D: `SyntaxError`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+Dizi içinde, dizinin uzunluğunu aşan bir elemana değer atadığınızda, JavaScript "boş alanlar, "empty slots", denilen bir şey oluşturur. Bunların değeri aslında `undefined` olsa da şöyle bir şey görürsünüz:
+
+`[1, 2, 3, 7 x empty, 11]`
+
+nerede çalıştırdığınıza bağlı olarak (her tarayıcı, node, vb... için farklıdır.)
+
+</p>
+</details>
+
+---
+
 
 
 
