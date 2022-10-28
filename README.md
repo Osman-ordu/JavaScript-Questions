@@ -1096,6 +1096,124 @@ nerede çalıştırdığınıza bağlı olarak (her tarayıcı, node, vb... içi
 </details>
 
 ---
+###### 38. Çıktısı Nedir?
+
+```javascript
+(() => {
+  let x, y;
+  try {
+    throw new Error();
+  } catch (x) {
+    (x = 1), (y = 2);
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+```
+
+- A: `1` `undefined` `2`
+- B: `undefined` `undefined` `undefined`
+- C: `1` `1` `2`
+- D: `1` `undefined` `undefined`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+`catch` bloğu `x` argumanını alıyor. Argumanları geçtiğimiz zaman, bu değişken olan `x` ile aynı değildir. Bu `x` değişkeni block-scoped'dur.
+
+Sonra, bu block-scoped değişkeni `1`'e eşit olarak ayarladık ve `y` değişkeninin değerini ayarladık. Block-scoped `x` değişkenini logladık, ki değeri `1`'e eşitti.
+
+`catch` bloğunun dışında, `x` hala `undefined`, ve `y` `2`'dir. `catch` bloğunun dışında, `console.log(x)` çalıştırmak istediğimizde `undefined` döndürür ve `y` `2` döndürür.
+
+</p>
+</details>
+
+---
+
+###### 39. JavaScript'teki her şey ya bir...
+
+- A: primitifdir ya da nesnedir
+- B: fonksiyondur or nesnedir
+- C: tuzak soru! sadece nesnedir
+- D: sayıdır (number) ya da nesnedir 
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: A
+
+JavaScript sadece primitif ve nesne tiplerine sahiptir.
+
+Primitif tipler, `boolean`, `null`, `undefined`, `bigint`, `number`, `string`, ve `symbol`.
+
+Primitif ve nesneyi birbirinden ayıran, primitif tiplerin herhangi bir özelliğe ya da metoda sahip olmamasıdır; ancak, fark edeceğiniz üzere `'foo'.toUpperCase()` `'FOO'` olarak değer döndürür ve `TypeError` ile sonuçlanmaz. Bunun sebebi, string gibi primitif bir tip üzerinde özelliğe ya da methoda erişmeye çalıştığınızda, JavaScript sarıcı sınıflardan, "wrapper classes", birini kullanarak nesneyi dolaylı şekilde sarar, örneğin `String`, ve sonrasında ifade çalıştıktan sonra anında sarıcıyı ayırır. `null` ve `undefined` dışındaki tüm primitifler bu şekilde davranır.
+
+</p>
+</details>
+
+---
+
+###### 40. Çıktısı Nedir?
+
+```javascript
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur);
+  },
+  [1, 2]
+);
+```
+
+- A: `[0, 1, 2, 3, 1, 2]`
+- B: `[6, 1, 2]`
+- C: `[1, 2, 0, 1, 2, 3]`
+- D: `[1, 2, 6]`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: C
+
+`[1, 2]` başlangıç değerimizdir. Başladığımız değer budur ve `acc`'nin en ilk değeridir. İlk tur süresince, `acc` `[1,2]`'dir ve `cur` `[0, 1]`'dir. Onları birleştiririz ve `[1, 2, 0, 1]` olarak sonuçlanır.
+
+Sonra, `acc` `[1, 2, 0, 1]`'dir ve `cur` `[2, 3]`'dür. Onları birleştiririz ve `[1, 2, 0, 1, 2, 3]` elde ederiz.
+
+</p>
+</details>
+
+---
+
+###### 41. Çıktısı Nedir?
+
+```javascript
+!!null;
+!!"";
+!!1;
+```
+
+- A: `false` `true` `false`
+- B: `false` `false` `true`
+- C: `false` `true` `true`
+- D: `true` `true` `false`
+
+<details><summary><b>Cevap</b></summary>
+<p>
+
+#### Cevap: B
+
+`null` yanlış-ımsıdır, "falsy". `!null` `true` döndürür. `!true` `false` döndürür.
+
+`""` yanlış-ımsıdır. `!""` `true` döndürür. `!true` `false` döndürür.
+
+`1` doğrusaldır. `!1` `false` döndürür. `!false` `true` döndürür.
+
+</p>
+</details>
+
+---
 
 
 
